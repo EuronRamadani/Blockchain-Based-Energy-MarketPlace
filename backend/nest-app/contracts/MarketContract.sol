@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
 import "./UserContract.sol";
-import "./EnergyDataContract.sol";
 
 contract MarketContract {
     struct Listing {
@@ -21,7 +19,6 @@ contract MarketContract {
     }
 
     UserContract public userContract;
-    EnergyDataContract public energyDataContract;
 
     Transaction[] public transactions;
     Listing[] public listings;
@@ -37,9 +34,8 @@ contract MarketContract {
 
     event DebugValues(uint256 pricePerUnit, uint256 units, uint256 msgValue);
 
-    constructor(address _userContract, address _energyDataContract) {
+    constructor(address _userContract) {
         userContract = UserContract(_userContract);
-        energyDataContract = EnergyDataContract(_energyDataContract);
     }
 
     function addListing(uint256 units, uint256 pricePerUnit) public {

@@ -3,7 +3,6 @@ import { ethers, Contract } from 'ethers';
 import * as AWS from 'aws-sdk';
 import * as UserContractArtifact from '../build/contracts/UserContract.json';
 import * as MarketContractArtifact from '../build/contracts/MarketContract.json';
-import * as EnergyDataContractArtifact from '../build/contracts/EnergyDataContract.json';
 import { ConfigService } from '@nestjs/config'; 
 
 @Injectable()
@@ -15,7 +14,6 @@ export class AppService {
 
   userContract: Contract;
   marketContract: Contract;
-  energyDataContract: Contract;
 
   constructor(private configService: ConfigService) {
     //const apiKey = this.configService.get<string>('INFURA_API_KEY');
@@ -36,12 +34,6 @@ export class AppService {
     this.marketContract = new Contract(
       this.configService.get<string>('MARKET_CONTRACT_ADDRESS'),
       MarketContractArtifact.abi,
-      this.signer
-    );
-
-    this.energyDataContract = new Contract(
-      this.configService.get<string>('ENERGY_DATA_CONTRACT_ADDRESS'),
-      EnergyDataContractArtifact.abi,
       this.signer
     );
 
@@ -98,8 +90,6 @@ export class AppService {
     // add a new listing to the market contract
     const tx = await this.marketContract.addListing(units, pricePerUnit);
     await tx.wait();
-
- 
     return { message: 'Listing added successfully' }; 
   } 
 
@@ -125,5 +115,4 @@ export class AppService {
     }
     return { listings };
   }
-
 }
