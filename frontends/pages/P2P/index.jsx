@@ -149,7 +149,7 @@ export default function P2P() {
                     setLoading(true)
                     const response = await fetch('http://localhost:4000/user/listings');
                     const data = await response.json();
-                    setListings([...data.listings].reverse());
+                    setListings([...data.listings]);
                     setLoading(false)
 
                 } catch (error) {
@@ -272,6 +272,40 @@ export default function P2P() {
         }
 
     }
+
+    const placeRequest = async (oferid, listing) => {
+        const url = "http://localhost:4000/user/purchase";
+        const payload = {
+            offerId: oferid,
+            value: parseInt(listing[2].hex, 16) * parseInt(listing[1].hex, 16)
+        };
+
+        try {
+            console.log(payload);
+            setLoading(true);
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+                setLoading(false);
+                throw new Error("Request failed with status " + response.status);
+            }
+
+            const result = await response.json();
+            console.log("Purchase successful:", result);
+            setLoading(false);
+            alert("Purchase completed successfully!");
+        } catch (error) {
+            console.error("Error in placeRequest:", error.message);
+            alert("Failed to complete the purchase. Please try again.");
+            setLoading(false);
+        }
+    };
 
     console.log('listings', listings)
     console.log('loadin', loading)
@@ -430,11 +464,10 @@ export default function P2P() {
                         {/* MAPPING LISTINGS */}
                         {listings && listings.map((listing, index) => {
 
-                            console.log('listing', listing)
+                            console.log('listing & Index', listing, index)
                             return (
-
+                                
                                 //  Data Row Container 
-                                (listing[3]) &&
                                 <div key={index} className={`${styles.dataRowContainer} z-20 flex items-center justify-between w-[90%] mt-[20px] py-[48px]`}>
                                     {/* Seller  */}
                                     <div className="flex justify-center items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px] pl-[45px] w-[10%]">{listing[0]?.slice(0, 4)}....${listing[0]?.slice(-4)}</div>
@@ -448,7 +481,10 @@ export default function P2P() {
                                     <div className="flex justify-center items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px] w-[8%]">{(parseInt(listing[2].hex, 16) * pricePerUnitConversionRate * parseInt(listing[1].hex, 16)).toFixed(3)} MATIC</div>
                                     {/* action Btn */}
                                     <div className="flex items-center justify-end pr-[30px] w-[23%]">
-                                        <button className={`${styles.placeRequestBtn} px-[20px] py-[5px] hover:bg-green-500 font-poppins font-bold text-[24px] leading-[36px] text-white transition-colors duration-300`}>
+                                        <button 
+                                            className={`${styles.placeRequestBtn} px-[20px] py-[5px] hover:bg-green-500 font-poppins font-bold text-[24px] leading-[36px] text-white transition-colors duration-300`} 
+                                            onClick={() => placeRequest(index, listing)}
+                                            disabled={!listing[3]} >
                                             Place Request
                                         </button>
                                     </div>

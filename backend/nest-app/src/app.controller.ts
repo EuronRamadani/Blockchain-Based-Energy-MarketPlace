@@ -15,6 +15,11 @@ export class AppController {
     return this.appService.becomeSeller();
   }
 
+  @Post('becomeBuyer')
+  async becomeBuyer() {
+    return this.appService.becomeBuyer();
+  }
+
   @Get('role')
   async getUserRole() {
     return this.appService.getUserRole();
@@ -24,6 +29,8 @@ export class AppController {
   async getSellerEnergyData() {
     return this.appService.getSellerEnergyData();
   }
+
+  
 
   @Get('energyData/consumer')
   async getConsumerEnergyData() {
@@ -43,6 +50,6 @@ export class AppController {
 
   @Post('purchase')
   async purchase(@Body() body: OfferIdDto) {
-    return this.appService.purchase(body.offerId);
+    return this.appService.purchase(body.offerId, body.value);
   }
 }

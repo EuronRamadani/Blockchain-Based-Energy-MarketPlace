@@ -57,6 +57,14 @@ export class AppService {
     return { message: 'Become seller successfully' };
   }
 
+  async becomeBuyer() {
+    // change the user role to Seller in the contract
+    const tx = await this.userContract.becomeBuyer();
+    await tx.wait();
+
+    return { message: 'Become buyer successfully' };
+  }
+
   async getUserRole() {
     // get the user's role from the contract
     try {
@@ -93,9 +101,10 @@ export class AppService {
     return { message: 'Listing added successfully' }; 
   } 
 
-  async purchase(offerId: string) {
+  async purchase(listingId: number, value: number) {
     // make a purchase from the market contract
-    const tx = await this.marketContract.purchase(offerId); 
+    const tx = await this.marketContract.purchase(listingId, {
+      value: value,}); 
     await tx.wait(); 
 
     return { message: 'Purchase successful' };
