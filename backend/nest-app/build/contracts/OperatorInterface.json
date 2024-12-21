@@ -354,7 +354,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport \"./OracleInterface.sol\";\nimport \"./ChainlinkRequestInterface.sol\";\n\ninterface OperatorInterface is OracleInterface, ChainlinkRequestInterface {\n  function operatorRequest(\n    address sender,\n    uint256 payment,\n    bytes32 specId,\n    bytes4 callbackFunctionId,\n    uint256 nonce,\n    uint256 dataVersion,\n    bytes calldata data\n  ) external;\n\n  function fulfillOracleRequest2(\n    bytes32 requestId,\n    uint256 payment,\n    address callbackAddress,\n    bytes4 callbackFunctionId,\n    uint256 expiration,\n    bytes calldata data\n  ) external returns (bool);\n\n  function ownerTransferAndCall(\n    address to,\n    uint256 value,\n    bytes calldata data\n  ) external returns (bool success);\n\n  function distributeFunds(address payable[] calldata receivers, uint256[] calldata amounts) external payable;\n\n  function getAuthorizedSenders() external returns (address[] memory);\n\n  function setAuthorizedSenders(address[] calldata senders) external;\n\n  function getForwarder() external returns (address);\n}\n",
-  "sourcePath": "@chainlink\\contracts\\src\\v0.8\\interfaces\\OperatorInterface.sol",
+  "sourcePath": "@chainlink/contracts/src/v0.8/interfaces/OperatorInterface.sol",
   "ast": {
     "absolutePath": "@chainlink/contracts/src/v0.8/interfaces/OperatorInterface.sol",
     "exportedSymbols": {
@@ -1325,7 +1325,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-11-29T17:53:11.689Z",
+  "updatedAt": "2024-12-03T18:20:05.236Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

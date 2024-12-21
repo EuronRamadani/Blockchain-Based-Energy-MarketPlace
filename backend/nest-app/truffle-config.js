@@ -49,18 +49,18 @@
 module.exports = {
   networks: {
     development: {
-      host: "127.0.0.1",     // Localhost (default)
-      port: 8545,            // Ganache default port
-      network_id: "*",       // Match any network id
+      host: '127.0.0.1', // Localhost (default)
+      port: 8545, // Ganache default port
+      network_id: '*', // Match any network id
     },
   },
   compilers: {
     solc: {
-      version: "0.8.9",       // Match your Solidity versions
+      version: '0.8.9', // Match your Solidity versions
       settings: {
         optimizer: {
           enabled: true,
-          runs: 200
+          runs: 200,
         },
       },
     },
@@ -77,5 +77,3 @@ module.exports = {
 // After you backed up your artifacts you can utilize db by running migrate as follows:
 // $ truffle migrate --reset --compile-all
 //
-
-

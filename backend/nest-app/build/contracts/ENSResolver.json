@@ -30,7 +30,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nabstract contract ENSResolver {\n  function addr(bytes32 node) public view virtual returns (address);\n}\n",
-  "sourcePath": "@chainlink\\contracts\\src\\v0.8\\vendor\\ENSResolver.sol",
+  "sourcePath": "@chainlink/contracts/src/v0.8/vendor/ENSResolver.sol",
   "ast": {
     "absolutePath": "@chainlink/contracts/src/v0.8/vendor/ENSResolver.sol",
     "exportedSymbols": {
@@ -166,7 +166,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-11-29T17:53:11.723Z",
+  "updatedAt": "2024-12-03T18:20:05.244Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

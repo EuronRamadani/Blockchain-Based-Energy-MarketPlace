@@ -24,7 +24,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface PointerInterface {\n  function getAddress() external view returns (address);\n}\n",
-  "sourcePath": "@chainlink\\contracts\\src\\v0.8\\interfaces\\PointerInterface.sol",
+  "sourcePath": "@chainlink/contracts/src/v0.8/interfaces/PointerInterface.sol",
   "ast": {
     "absolutePath": "@chainlink/contracts/src/v0.8/interfaces/PointerInterface.sol",
     "exportedSymbols": {
@@ -132,7 +132,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-11-29T17:53:11.694Z",
+  "updatedAt": "2024-12-03T18:20:05.237Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

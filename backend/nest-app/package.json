@@ -31,7 +31,8 @@
     "cors": "^2.8.5",
     "ethers": "^5.7.2",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "truffle": "^5.11.5"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

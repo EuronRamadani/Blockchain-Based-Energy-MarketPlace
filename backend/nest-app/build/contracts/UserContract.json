@@ -713,7 +713,7 @@
   "sourceMap": "60:415:26:-:0;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "60:415:26:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;259:213;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;170:81;;218:10;212:5;:17;;;;;;;;;;:31;;-1:-1:-1;;212:31:26;232:11;212:31;;;170:81;;;124:37;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;259:213;318:4;357:11;-1:-1:-1;;;;;338:15:26;;:5;:15;;;;;;;;;;;;;;:30;;;;;;;:::i;:::-;;335:130;;;-1:-1:-1;392:11:26;;259:213;-1:-1:-1;259:213:26:o;335:130::-;-1:-1:-1;443:10:26;;259:213;-1:-1:-1;259:213:26:o;14:286:27:-;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;168:23;;-1:-1:-1;;;;;220:31:27;;210:42;;200:70;;266:1;263;256:12;200:70;289:5;14:286;-1:-1:-1;;;14:286:27:o;305:127::-;366:10;361:3;357:20;354:1;347:31;397:4;394:1;387:15;421:4;418:1;411:15;437:337;578:2;563:18;;611:1;600:13;;590:144;;656:10;651:3;647:20;644:1;637:31;691:4;688:1;681:15;719:4;716:1;709:15;590:144;743:25;;;437:337;:::o",
   "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract UserContract {\r\n    enum Role { Buyer, Seller }\r\n\r\n    mapping(address => Role) public users;\r\n\r\n    function becomeSeller() public {\r\n        users[msg.sender] = Role.Seller;\r\n    }\r\n\r\n    function getUserRole(address _address) public view returns(Role) {\r\n        if(users[_address] == Role.Seller) {\r\n            return Role.Seller;\r\n        } else {\r\n            return Role.Buyer;\r\n        }\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n",
-  "sourcePath": "C:\\Users\\Hp\\OneDrive\\Desktop\\Energy_Trading_Blockchain-1\\backend\\nest-app\\contracts\\UserContract.sol",
+  "sourcePath": "/Users/euron/Desktop/Personal_projects/Blockchain-Based Energy MarketPlace/Blockchain-Based-Energy-MarketPlace/backend/nest-app/contracts/UserContract.sol",
   "ast": {
     "absolutePath": "project:/contracts/UserContract.sol",
     "exportedSymbols": {
@@ -1241,12 +1241,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xF788e04471Ba6aa007e88B9BC33B080391bA3d2B",
-      "transactionHash": "0x4fa36df893970e66986a3955998df7e7cb3387db166ec60466de2cdc6e1e2de6"
+      "address": "0x18B07a23BF9f359b6B4F47815422F774c57a3032",
+      "transactionHash": "0x5f3345dbebf10caeeab4dae7dbbb4555279f4caa9c086f29773b7be054b15588"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-11-29T17:53:22.942Z",
+  "updatedAt": "2024-12-03T18:22:40.729Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
