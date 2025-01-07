@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../../styles/P2P.module.css";
 import SideBar from "../../components/SideBar";
 import { useEffect, useState } from "react";
-import styled, { keyframes, css } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components';
 import {
     useAccount,
     useConnect,
@@ -13,6 +13,23 @@ import {
     useNetwork
 } from 'wagmi'
 import Spinner from "../../components/Spinner";
+
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    setMode,
+    setPaymentMethod,
+    setPricePerUnitUSD,
+    setPricePerUnitMATIC,
+    setPricePerUnitError,
+    setAmount,
+    setAmountError,
+    setConversionRate,
+    setAddedListingMessage,
+    setListings,
+    setLoading,
+    setToggleDropdown,
+} from '../../store/p2pSlice';
+
 
 let scaleZ = keyframes`
   0% {
@@ -57,26 +74,42 @@ const paymentMethods = ['EFT Token', 'method 2', 'method 3']
 
 
 export default function P2P() {
-
-    const [mode, setMode] = useState('Buyer');
-    const [paymentMethod, setPaymentMethod] = useState('EFT Token');
-
-    const [pricePerUnitUSD, setPricePerUnitUSD] = useState('');
-    const [pricePerUnitMATIC, setPricePerUnitMATIC] = useState('');
-    const [pricePerUnitError, setPricePerUnitError] = useState("");
-    const [amount, setAmount] = useState('');
-    const [amountError, setAmountError] = useState("");
-
-    const [pricePerUnitConversionRate, setPricePerUnitConversionRate] = useState('');
-
-    const [addedListingMessage, setAddedListingMessage] = useState("");
-    const [listings, setListings] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    const [toggleDropdown, setToggleDropdown] = useState(false)
-
-    const { address, connector, isConnected } = useAccount()
-    const { data: ensName } = useEnsName({ address })
+    /*
+        const [mode, setMode] = useState('Buyer');
+        const [paymentMethod, setPaymentMethod] = useState('EFT Token');
+    
+        const [pricePerUnitUSD, setPricePerUnitUSD] = useState('');
+        const [pricePerUnitMATIC, setPricePerUnitMATIC] = useState('');
+        const [pricePerUnitError, setPricePerUnitError] = useState("");
+        const [amount, setAmount] = useState('');
+        const [amountError, setAmountError] = useState("");
+    
+        const [pricePerUnitConversionRate, setPricePerUnitConversionRate] = useState('');
+    
+        const [addedListingMessage, setAddedListingMessage] = useState("");
+        const [listings, setListings] = useState([]);
+        const [loading, setLoading] = useState(true);
+    
+        const [toggleDropdown, setToggleDropdown] = useState(false)
+    
+        const { address, connector, isConnected } = useAccount()
+        const { data: ensName } = useEnsName({ address })
+    */
+    const dispatch = useDispatch();
+    const {
+        mode,
+        paymentMethod,
+        pricePerUnitUSD,
+        pricePerUnitMATIC,
+        pricePerUnitError,
+        amount,
+        amountError,
+        pricePerUnitConversionRate,
+        addedListingMessage,
+        listings,
+        loading,
+        toggleDropdown,
+    } = useSelector((state) => state.p2p);
 
     useEffect(() => {
 
@@ -441,32 +474,12 @@ export default function P2P() {
                             <div className="font-montserrat font-bold text-white text-center text-[24px] leading-[29px] w-[23%]">Action</div>
                         </div>
 
-                        {/* Data Row Container */}
-                        {/* <div className={`${styles.dataRowContainer} z-20 flex items-center justify-between w-[90%] mt-[20px] py-[48px]`}> */}
-                        {/* Seller */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px] pl-[30px] w-[10%]">{address.slice(0, 4)}....${address.slice(-4)}</div> */}
-                        {/* Price */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px]">$0.23</div> */}
-                        {/* Available amount */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px]">300 NRGT</div> */}
-                        {/* method */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px]">MATIC</div> */}
-                        {/* Total */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px]">$69</div> */}
-                        {/* action Btn */}
-                        {/* <div className="flex items-center justify-end pr-[30px] w-[23%]">
-                                <button className={`${styles.placeRequestBtn} px-[20px] py-[5px] hover:bg-green-500 font-poppins font-bold text-[24px] leading-[36px] text-white transition-colors duration-300`}>
-                                    Place Request
-                                </button>
-                            </div> */}
-                        {/* </div> */}
-
                         {/* MAPPING LISTINGS */}
                         {listings && listings.map((listing, index) => {
 
                             console.log('listing & Index', listing, index)
                             return (
-                                
+
                                 //  Data Row Container 
                                 <div key={index} className={`${styles.dataRowContainer} z-20 flex items-center justify-between w-[90%] mt-[20px] py-[48px]`}>
                                     {/* Seller  */}
@@ -481,8 +494,8 @@ export default function P2P() {
                                     <div className="flex justify-center items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px] w-[8%]">{(parseInt(listing[2].hex, 16) * pricePerUnitConversionRate * parseInt(listing[1].hex, 16)).toFixed(3)} MATIC</div>
                                     {/* action Btn */}
                                     <div className="flex items-center justify-end pr-[30px] w-[23%]">
-                                        <button 
-                                            className={`${styles.placeRequestBtn} px-[20px] py-[5px] hover:bg-green-500 font-poppins font-bold text-[24px] leading-[36px] text-white transition-colors duration-300`} 
+                                        <button
+                                            className={`${styles.placeRequestBtn} px-[20px] py-[5px] hover:bg-green-500 font-poppins font-bold text-[24px] leading-[36px] text-white transition-colors duration-300`}
                                             onClick={() => placeRequest(index, listing)}
                                             disabled={!listing[3]} >
                                             Place Request
