@@ -1,6 +1,11 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/ConnectWallet": "pages/ConnectWallet.html",
+  "/Dashboard": "pages/Dashboard.html",
+  "/OrderSuccess": "pages/OrderSuccess.html",
+  "/P2P": "pages/P2P.html",
+  "/": "pages/index.html",
   "/_document": "pages/_document.js",
-  "/P2P": "pages/P2P.js"
+  "/404": "pages/404.html"
 }
