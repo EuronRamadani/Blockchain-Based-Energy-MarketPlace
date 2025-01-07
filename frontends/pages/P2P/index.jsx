@@ -441,32 +441,12 @@ export default function P2P() {
                             <div className="font-montserrat font-bold text-white text-center text-[24px] leading-[29px] w-[23%]">Action</div>
                         </div>
 
-                        {/* Data Row Container */}
-                        {/* <div className={`${styles.dataRowContainer} z-20 flex items-center justify-between w-[90%] mt-[20px] py-[48px]`}> */}
-                        {/* Seller */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px] pl-[30px] w-[10%]">{address.slice(0, 4)}....${address.slice(-4)}</div> */}
-                        {/* Price */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px]">$0.23</div> */}
-                        {/* Available amount */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px]">300 NRGT</div> */}
-                        {/* method */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px]">MATIC</div> */}
-                        {/* Total */}
-                        {/* <div className="flex items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px]">$69</div> */}
-                        {/* action Btn */}
-                        {/* <div className="flex items-center justify-end pr-[30px] w-[23%]">
-                                <button className={`${styles.placeRequestBtn} px-[20px] py-[5px] hover:bg-green-500 font-poppins font-bold text-[24px] leading-[36px] text-white transition-colors duration-300`}>
-                                    Place Request
-                                </button>
-                            </div> */}
-                        {/* </div> */}
-
                         {/* MAPPING LISTINGS */}
                         {listings && listings.map((listing, index) => {
 
                             console.log('listing & Index', listing, index)
                             return (
-                                
+
                                 //  Data Row Container 
                                 <div key={index} className={`${styles.dataRowContainer} z-20 flex items-center justify-between w-[90%] mt-[20px] py-[48px]`}>
                                     {/* Seller  */}
@@ -481,8 +461,8 @@ export default function P2P() {
                                     <div className="flex justify-center items-center font-montserrat font-normal text-white text-center text-[24px] leading-[29px] w-[8%]">{(parseInt(listing[2].hex, 16) * pricePerUnitConversionRate * parseInt(listing[1].hex, 16)).toFixed(3)} MATIC</div>
                                     {/* action Btn */}
                                     <div className="flex items-center justify-end pr-[30px] w-[23%]">
-                                        <button 
-                                            className={`${styles.placeRequestBtn} px-[20px] py-[5px] hover:bg-green-500 font-poppins font-bold text-[24px] leading-[36px] text-white transition-colors duration-300`} 
+                                        <button
+                                            className={`${styles.placeRequestBtn} px-[20px] py-[5px] hover:bg-green-500 font-poppins font-bold text-[24px] leading-[36px] text-white transition-colors duration-300`}
                                             onClick={() => placeRequest(index, listing)}
                                             disabled={!listing[3]} >
                                             Place Request
