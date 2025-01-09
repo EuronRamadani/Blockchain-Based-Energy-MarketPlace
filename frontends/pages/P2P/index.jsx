@@ -14,22 +14,21 @@ import {
 } from "wagmi";
 import Spinner from "../../components/Spinner";
 
-/*import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import {
-    setMode,
-    setPaymentMethod,
-    setPricePerUnitUSD,
-    setPricePerUnitMATIC,
-    setPricePerUnitError,
-    setAmount,
-    setAmountError,
-    setConversionRate,
-    setAddedListingMessage,
-    setListings,
-    setLoading,
-    setToggleDropdown,
-} from '../../store/p2pSlice';
-*/
+  setMode,
+  setPaymentMethod,
+  setPricePerUnitUSD,
+  setPricePerUnitMATIC,
+  setPricePerUnitError,
+  setAmount,
+  setAmountError,
+  setConversionRate,
+  setAddedListingMessage,
+  setListings,
+  setLoading,
+  setToggleDropdown,
+} from "../../store/p2pSlice";
 
 let scaleZ = keyframes`
   0% {
@@ -77,42 +76,41 @@ const DropDownItem = styled.div`
 const paymentMethods = ["Ethereum", "method 2", "method 3"];
 
 export default function P2P() {
-  const [mode, setMode] = useState("Buyer");
-  const [paymentMethod, setPaymentMethod] = useState("Ethereum");
+  //   const [mode, setMode] = useState("Buyer");
+  //   const [paymentMethod, setPaymentMethod] = useState("Ethereum");
 
-  const [pricePerUnitUSD, setPricePerUnitUSD] = useState("");
-  const [pricePerUnitMATIC, setPricePerUnitMATIC] = useState("");
-  const [pricePerUnitError, setPricePerUnitError] = useState("");
-  const [amount, setAmount] = useState("");
-  const [amountError, setAmountError] = useState("");
+  //   const [pricePerUnitUSD, setPricePerUnitUSD] = useState("");
+  //   const [pricePerUnitMATIC, setPricePerUnitMATIC] = useState("");
+  //   const [pricePerUnitError, setPricePerUnitError] = useState("");
+  //   const [amount, setAmount] = useState("");
+  //   const [amountError, setAmountError] = useState("");
 
-  const [pricePerUnitConversionRate, setPricePerUnitConversionRate] =
-    useState("");
+  //   const [pricePerUnitConversionRate, setPricePerUnitConversionRate] =
+  //     useState("");
 
-  const [addedListingMessage, setAddedListingMessage] = useState("");
-  const [listings, setListings] = useState([]);
-  const [loading, setLoading] = useState(true);
+  //   const [addedListingMessage, setAddedListingMessage] = useState("");
+  //   const [listings, setListings] = useState([]);
+  //   const [loading, setLoading] = useState(true);
 
-  const [toggleDropdown, setToggleDropdown] = useState(false);
+  //   const [toggleDropdown, setToggleDropdown] = useState(false);
 
-  const { address, connector, isConnected } = useAccount();
-  const { data: ensName } = useEnsName({ address });
+  //   const { address, connector, isConnected } = useAccount();
+  //   const { data: ensName } = useEnsName({ address });
 
-  /*const dispatch = useDispatch();
-    const {
-        mode,
-        paymentMethod,
-        pricePerUnitUSD,
-        pricePerUnitMATIC,
-        pricePerUnitError,
-        amount,
-        amountError,
-        pricePerUnitConversionRate,
-        addedListingMessage,
-        listings,
-        loading,
-        toggleDropdown,
-    } = useSelector((state) => state.p2p);*/
+  const {
+    mode,
+    paymentMethod,
+    pricePerUnitUSD,
+    pricePerUnitMATIC,
+    pricePerUnitError,
+    amount,
+    amountError,
+    pricePerUnitConversionRate,
+    addedListingMessage,
+    listings,
+    loading,
+    toggleDropdown,
+  } = useSelector((state) => state.p2p);
 
   useEffect(() => {
     if (mode == "Seller") {
